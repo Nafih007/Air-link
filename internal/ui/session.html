@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Air-Link</title>
+  <style>
+    :root {
+      --bg: #242529;
+      --card: #2c2d32;
+      --text: #ffffff;
+      --muted: #c4c5c8;
+      --accent: #3d8bfd;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 1rem 1.1rem 1.2rem;
+      user-select: none;
+    }
+    .brand { display: flex; align-items: center; gap: 0.5rem; }
+    .brand img { width: 28px; height: 28px; display: block; }
+    h1 { margin: 0; font-size: 1.05rem; font-weight: 650; }
+    .sub { color: var(--muted); font-size: 0.85rem; margin: 0.2rem 0 0.9rem; }
+    .qr-wrap {
+      background: #fff;
+      border-radius: 12px;
+      padding: 0.75rem;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 0.9rem;
+    }
+    .qr-wrap img { width: 220px; height: 220px; display: block; }
+    .name { font-weight: 600; word-break: break-word; margin: 0 0 0.2rem; }
+    .meta { color: var(--muted); font-size: 0.9rem; margin: 0 0 0.75rem; }
+    .countdown {
+      background: var(--card);
+      border-radius: 10px;
+      padding: 0.65rem 0.8rem;
+      font-variant-numeric: tabular-nums;
+      font-size: 0.95rem;
+    }
+    .countdown strong { color: var(--accent); }
+    .hint { color: var(--muted); font-size: 0.8rem; margin: 0.75rem 0 0; }
+    .status {
+      display: none;
+      margin: 0.65rem 0 0;
+      padding: 0.55rem 0.7rem;
+      border-radius: 10px;
+      background: #14301f;
+      color: #3dd68c;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .progress {
+      display: none;
+      margin: 0.4rem 0 0;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .approve {
+      display: none;
+      margin: 0.75rem 0;
+      padding: 0.85rem 0.9rem;
+      border-radius: 12px;
+      background: #243044;
+      border: 1px solid #3a465c;
+    }
+    .approve strong { display: block; margin-bottom: 0.35rem; }
+    .approve p { margin: 0 0 0.75rem; color: var(--muted); font-size: 0.9rem; }
+    .approve-actions { display: flex; gap: 0.5rem; }
+    .approve-yes, .approve-no {
+      flex: 1;
+      appearance: none;
+      border: none;
+      border-radius: 10px;
+      padding: 0.65rem 0.5rem;
+      font-size: 0.95rem;
+      font-weight: 650;
+      cursor: pointer;
+      color: #fff;
+    }
+    .approve-yes { background: #2f9e66; }
+    .approve-no { background: #8b3a3a; }
+    .toast {
+      display: none;
+      margin: 0.75rem 0 0;
+      padding: 0.85rem 0.9rem;
+      border-radius: 12px;
+      background: #14301f;
+      color: #3dd68c;
+      font-size: 0.9rem;
+    }
+    .toast strong { display: block; margin-bottom: 0.55rem; font-weight: 650; }
+    .toast-open {
+      appearance: none;
+      border: none;
+      border-radius: 10px;
+      padding: 0.55rem 0.75rem;
+      font-size: 0.9rem;
+      font-weight: 650;
+      cursor: pointer;
+      color: #fff;
+      background: var(--accent);
+    }
+    .pinbox {
+      display: none;
+      margin: 0.5rem 0 0.85rem;
+      padding: 0.7rem 0.85rem;
+      border-radius: 12px;
+      background: #243044;
+      font-variant-numeric: tabular-nums;
+    }
+    .pinbox strong { font-size: 1.35rem; letter-spacing: 0.2em; }
+    .devices { margin-top: 0.75rem; font-size: 0.85rem; }
+    .devices h2 { margin: 0 0 0.4rem; font-size: 0.9rem; }
+    .dev-row {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 0.4rem; margin: 0.35rem 0;
+    }
+    .dev-row button {
+      appearance: none; border: none; border-radius: 8px;
+      padding: 0.3rem 0.55rem; background: #8b3a3a; color: #fff;
+      font-weight: 650; cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="brand">
+    <img src="data:image/png;base64,{{.Logomark}}" alt="">
+    <h1>Air-Link</h1>
+  </div>
+  <p class="sub" id="listen"></p>
+  <div class="pinbox" id="pinbox"><span>Phone PIN</span> <strong id="pin-code"></strong></div>
+  <div class="approve" id="approve"></div>
+  <div class="qr-wrap"><img id="qr" alt="QR code"></div>
+  <p class="name" id="name"></p>
+  <p class="meta" id="size"></p>
+  <div class="countdown">Expires in <strong id="left">--:--</strong></div>
+  <div class="status" id="status"></div>
+  <div class="progress" id="progress"></div>
+  <div class="toast" id="toast"></div>
+  <div class="devices" id="devices" hidden>
+    <h2>Connected devices</h2>
+    <div id="device-list"></div>
+  </div>
+  <div class="devices" id="paired" hidden>
+    <h2>Paired phones</h2>
+    <div id="paired-list"></div>
+  </div>
+  <p class="hint">Scan with your phone · Close this window to stop</p>
+  <script>
+    const payload = {{.PayloadJSON}};
+    document.getElementById("name").textContent = payload.fileName;
+    document.getElementById("size").textContent = payload.sizeLabel + " · " + payload.listenAddr;
+    document.getElementById("listen").textContent = "Listening on " + payload.listenAddr;
+    document.getElementById("qr").src = "data:image/png;base64," + payload.qrBase64;
+    if (payload.pin) {
+      document.getElementById("pinbox").style.display = "block";
+      document.getElementById("pin-code").textContent = payload.pin;
+    }
+
+    const idle = payload.idleSeconds || 0;
+    if (idle <= 0) {
+      document.getElementById("left").textContent = "until you stop";
+    } else {
+      const end = Date.now() + (idle * 1000);
+      function tick() {
+        const ms = Math.max(0, end - Date.now());
+        const s = Math.floor(ms / 1000);
+        const m = Math.floor(s / 60);
+        const r = s % 60;
+        document.getElementById("left").textContent =
+          String(m).padStart(2, "0") + ":" + String(r).padStart(2, "0");
+        if (ms === 0 && window.sessionExpired) {
+          window.sessionExpired();
+        }
+      }
+      tick();
+      setInterval(tick, 250);
+    }
+  </script>
+</body>
+</html>

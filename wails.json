@@ -1,0 +1,22 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "airlink",
+  "outputfilename": "airlink",
+  "frontend:dir": "frontend",
+  "frontend:install": "",
+  "frontend:build": "",
+  "frontend:dev:watcher": "",
+  "frontend:dev:serverUrl": "",
+  "wailsjsdir": "./frontend",
+  "assetdir": "./frontend/dist",
+  "author": {
+    "name": "Muhammad Sinan"
+  },
+  "info": {
+    "companyName": "Air-Link",
+    "productName": "Air-Link",
+    "productVersion": "1.0.0",
+    "copyright": "Copyright (c) 2026 Muhammad Sinan",
+    "comments": "Scan a QR to send files between your PC and phone"
+  }
+}

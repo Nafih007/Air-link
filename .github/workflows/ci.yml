@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Format
+        shell: pwsh
+        run: |
+          $out = gofmt -l .
+          if ($out) {
+            Write-Host "gofmt needed on:"
+            Write-Host $out
+            exit 1
+          }
+
+      - name: Vet
+        run: go vet ./...
+
+      - name: Test
+        run: go test ./...
+
+      - name: govulncheck
+        run: go run golang.org/x/vuln/cmd/govulncheck@latest ./...
+
+      - name: Tidy
+        shell: pwsh
+        run: |
+          go mod tidy
+          git diff --exit-code go.mod go.sum
+
+      - name: Build CLI helper
+        run: go build -o NUL ./cmd/sendtophone
+
+      - name: Install Wails
+        run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.0
+
+      - name: Build desktop
+        run: wails build

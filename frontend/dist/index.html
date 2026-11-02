@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Air-Link</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div class="brand">
+    <img src="logomark-transparent.png" alt="">
+    <h1>Air-Link</h1>
+  </div>
+  <p class="status" id="status" aria-live="polite">Starting…</p>
+  <div class="qr-wrap">
+    <img id="qr" alt="Session QR code">
+  </div>
+  <div class="url-row">
+    <code id="url"></code>
+    <button type="button" id="copy">Copy</button>
+  </div>
+  <p class="countdown" id="countdown"></p>
+  <p class="pin" id="pinbox" hidden>Phone PIN <strong id="pin"></strong></p>
+  <label class="auto"><input type="checkbox" id="autoallow"> Auto-allow new devices</label>
+  <div class="actions">
+    <button type="button" id="send">Send files…</button>
+    <button type="button" id="folder" class="secondary">Open received folder</button>
+    <button type="button" id="end" class="danger">End session</button>
+    <button type="button" id="refreshqr" class="secondary">Refresh QR</button>
+  </div>
+  <p class="drop-hint">Drop files here to send</p>
+  <div class="devices" id="devices" hidden>
+    <h2>Connected</h2>
+    <div id="device-list"></div>
+  </div>
+  <div class="timeline">
+    <h2>Timeline</h2>
+    <p class="empty" id="timeline-empty">No transfers yet. Scan the QR with your phone, or drag files here.</p>
+    <div id="items"></div>
+  </div>
+  <details class="settings" id="settings">
+    <summary>Settings</summary>
+    <p id="menu-label">Right-click menu: …</p>
+    <p class="menu-detail" id="menu-detail"></p>
+    <div class="actions">
+      <button type="button" id="menu-install">Install</button>
+      <button type="button" id="menu-repair" class="secondary">Repair</button>
+      <button type="button" id="menu-remove" class="danger">Remove</button>
+    </div>
+    <p class="win11-note" id="menu-win11"></p>
+  </details>
+  <script src="app.js"></script>
+</body>
+</html>

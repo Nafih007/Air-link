@@ -1,0 +1,44 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Install Wails
+        run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.0
+
+      - name: Build Air-Link
+        run: wails build -ldflags "-X main.version=${{ github.ref_name }}"
+
+      - name: SHA256
+        shell: pwsh
+        run: |
+          $hash = (Get-FileHash -Algorithm SHA256 ".\build\bin\airlink.exe").Hash.ToLower()
+          Set-Content -Encoding ascii -NoNewline ".\build\bin\airlink.exe.sha256" "$hash  airlink.exe`n"
+          Get-Content ".\build\bin\airlink.exe.sha256"
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            build/bin/airlink.exe
+            build/bin/airlink.exe.sha256
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

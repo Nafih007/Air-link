@@ -1,0 +1,28 @@
+{
+  "fixed": {
+    "file_version": "1.0.0.0",
+    "product_version": "1.0.0.0"
+  },
+  "info": {
+    "0000": {
+      "ProductVersion": "1.0.0",
+      "CompanyName": "Air-Link",
+      "FileDescription": "Air-Link",
+      "LegalCopyright": "Air-Link",
+      "ProductName": "Air-Link",
+      "Comments": "Scan a QR to send files between your PC and phone",
+      "OriginalFilename": "airlink.exe",
+      "InternalName": "airlink"
+    },
+    "0409": {
+      "ProductVersion": "1.0.0",
+      "CompanyName": "Air-Link",
+      "FileDescription": "Air-Link",
+      "LegalCopyright": "Air-Link",
+      "ProductName": "Air-Link",
+      "Comments": "Scan a QR to send files between your PC and phone",
+      "OriginalFilename": "airlink.exe",
+      "InternalName": "airlink"
+    }
+  }
+}

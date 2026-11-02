@@ -1,0 +1,134 @@
+:root {
+  --bg: #242529;
+  --card: #2c2d32;
+  --text: #ffffff;
+  --muted: #c4c5c8;
+  --accent: #3d8bfd;
+  --ok: #3dd68c;
+  --bad: #e25c5c;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  user-select: none;
+}
+body { padding: 0.75rem 0.9rem 1rem; }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.brand img { width: 28px; height: 28px; display: block; }
+h1 { margin: 0; font-size: 1.05rem; font-weight: 650; }
+.status {
+  margin: 0.3rem 0 0.55rem;
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.qr-wrap {
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+.qr-wrap img {
+  width: 220px;
+  height: 220px;
+  display: block;
+  image-rendering: pixelated;
+}
+.url-row {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.55rem;
+  align-items: center;
+}
+.url-row code {
+  flex: 1;
+  font-size: 0.65rem;
+  color: var(--muted);
+  word-break: break-all;
+  user-select: text;
+  line-height: 1.3;
+}
+button {
+  appearance: none;
+  border: none;
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 650;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: 0.78rem;
+}
+button.secondary { background: #3a3b41; }
+button.danger { background: #8b3a3a; }
+button.tiny { padding: 0.25rem 0.45rem; font-size: 0.72rem; }
+.pin {
+  margin: 0.5rem 0 0;
+  padding: 0.45rem 0.65rem;
+  background: var(--card);
+  border-radius: 10px;
+  font-variant-numeric: tabular-nums;
+}
+.pin strong { letter-spacing: 0.2em; font-size: 1.15rem; }
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.65rem;
+}
+.drop-hint { margin: 0.45rem 0 0; color: var(--muted); font-size: 0.75rem; }
+.countdown { margin: 0.35rem 0 0; color: var(--muted); font-size: 0.78rem; text-align: center; }
+.auto { display: flex; gap: 0.4rem; align-items: center; margin-top: 0.55rem; font-size: 0.8rem; color: var(--muted); }
+.devices, .timeline { margin-top: 0.7rem; font-size: 0.82rem; }
+.empty {
+  margin: 0.15rem 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+h2 { margin: 0 0 0.3rem; font-size: 0.8rem; color: var(--muted); font-weight: 650; }
+.dev-row, .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.28rem 0;
+  background: var(--card);
+  border-radius: 8px;
+  padding: 0.4rem 0.5rem;
+}
+.item .meta { color: var(--muted); font-size: 0.72rem; }
+.item .ok { color: var(--ok); }
+.item .wait { color: #e6c15a; }
+.item .fail { color: var(--bad); }
+.item-actions { display: flex; gap: 0.25rem; }
+body.drag .qr-wrap { outline: 2px dashed var(--accent); }
+.settings {
+  margin-top: 0.85rem;
+  background: var(--card);
+  border-radius: 10px;
+  padding: 0.45rem 0.6rem 0.65rem;
+  font-size: 0.8rem;
+}
+.settings summary {
+  cursor: pointer;
+  color: var(--muted);
+  font-weight: 650;
+  font-size: 0.8rem;
+}
+.settings #menu-label { margin: 0.5rem 0 0.25rem; font-weight: 650; }
+.menu-detail, .win11-note {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.35;
+}

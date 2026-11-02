@@ -1,0 +1,56 @@
+# Editor / agent
+.cursor/
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Build output
+build/bin/
+build/windows/installer/tmp/
+*.exe
+*.syso
+airlink-res.syso
+
+# Binaries and media that must not be committed
+*.bin
+*.mp4
+*.mov
+*.zip
+
+# Local test drops (if anyone creates them in the repo)
+test-files/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+
+# Logs (app default is %LOCALAPPDATA%\Air-Link\logs, not the repo)
+logs/
+*.log
+
+# Go
+vendor/
+coverage.out
+coverage.html
+
+# Node (frontend has no install step)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Wails generated frontend bindings
+frontend/wailsjs/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+Desktop.ini
+ehthumbs.db

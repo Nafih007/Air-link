@@ -1,0 +1,11 @@
+﻿# KDE Dolphin service menu stub — copy to ~/.local/share/kservices5/ServiceMenus/
+# and set Exec= to your airlink binary path.
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=all/allfiles;inode/directory;
+Actions=airlink
+
+[Desktop Action airlink]
+Name=Send with Air-Link
+Exec=airlink -- %F

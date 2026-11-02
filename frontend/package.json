@@ -1,0 +1,14 @@
+{
+  "name": "airlink-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Air-Link desktop window: vanilla HTML, CSS, and JS with no npm build step",
+  "author": "Muhammad Sinan",
+  "license": "MIT",
+  "keywords": [
+    "air-link",
+    "wails",
+    "qr",
+    "file-transfer"
+  ]
+}
