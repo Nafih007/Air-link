@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	"sendtophone/internal/pair"
+	"airlink/internal/pair"
 )
 
 const joinTTL = 2 * time.Minute

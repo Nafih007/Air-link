@@ -46,9 +46,9 @@ Useful commands (from the repo root):
 | Tests | `go test ./...` |
 | Desktop (dev) | `wails dev` or `make start` |
 | Desktop (prod) | `wails build` or `make build` |
-| CLI package | `go run ./cmd/sendtophone -h` (Go folder name; product is `airlink.exe`) |
+| CLI package | `go run ./cmd/airlink -h` (product binary is `airlink.exe`) |
 
-The Go module path is still `sendtophone`.
+The Go module path is `airlink`.
 
 ## Branch and commit conventions
 

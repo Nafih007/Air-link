@@ -10,7 +10,7 @@ import (
 	"sync"
 	"time"
 
-	"sendtophone/internal/pair"
+	"airlink/internal/pair"
 )
 
 // Config for a send session.

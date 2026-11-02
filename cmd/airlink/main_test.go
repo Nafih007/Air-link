@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"sendtophone/internal/cli"
+	"airlink/internal/cli"
 )
 
 func TestVersionFlag(t *testing.T) {

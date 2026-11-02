@@ -11,14 +11,14 @@ import (
 	"sync"
 	"time"
 
-	"sendtophone/internal/clipboard"
-	"sendtophone/internal/mdns"
-	"sendtophone/internal/netinfo"
-	"sendtophone/internal/notify"
-	"sendtophone/internal/pair"
-	"sendtophone/internal/qr"
-	"sendtophone/internal/server"
-	"sendtophone/internal/ui"
+	"airlink/internal/clipboard"
+	"airlink/internal/mdns"
+	"airlink/internal/netinfo"
+	"airlink/internal/notify"
+	"airlink/internal/pair"
+	"airlink/internal/qr"
+	"airlink/internal/server"
+	"airlink/internal/ui"
 )
 
 type sessionOpts struct {
@@ -283,7 +283,7 @@ func runFileOrTextSession(payload server.Payload, opt sessionOpts) int {
 		fmt.Fprintf(opt.stderr, "airlink: %v\n", err)
 		return 1
 	}
-	qrPath := filepath.Join(os.TempDir(), "sendtophone-qr.png")
+	qrPath := filepath.Join(os.TempDir(), "airlink-qr.png")
 	_ = qr.WritePNG(sessionURL, qrPath, 512)
 	defer func() { _ = os.Remove(qrPath) }()
 
@@ -452,7 +452,7 @@ func runDirectQR(content, label string, opt sessionOpts) int {
 		fmt.Fprintf(opt.stderr, "airlink: %v\n", err)
 		return 1
 	}
-	qrPath := filepath.Join(os.TempDir(), "sendtophone-qr.png")
+	qrPath := filepath.Join(os.TempDir(), "airlink-qr.png")
 	_ = qr.WritePNG(content, qrPath, 512)
 	defer func() { _ = os.Remove(qrPath) }()
 

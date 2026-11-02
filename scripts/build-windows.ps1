@@ -2,7 +2,7 @@
 $ErrorActionPreference = "Stop"
 Set-Location (Split-Path -Parent $PSScriptRoot)
 $ver = "dev"
-if ($env:SENDTOPHONE_VERSION) { $ver = $env:SENDTOPHONE_VERSION }
+if ($env:AIRLINK_VERSION) { $ver = $env:AIRLINK_VERSION }
 if (-not (Get-Command wails -ErrorAction SilentlyContinue)) {
     Write-Error "wails not found. Install: go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.0"
 }

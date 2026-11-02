@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	"sendtophone/internal/cli"
-	"sendtophone/internal/shell"
+	"airlink/internal/cli"
+	"airlink/internal/shell"
 
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"

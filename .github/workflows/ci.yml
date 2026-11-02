@@ -48,7 +48,7 @@ jobs:
           git diff --exit-code go.mod go.sum
 
       - name: Build CLI helper
-        run: go build -o NUL ./cmd/sendtophone
+        run: go build -o NUL ./cmd/airlink
 
       - name: Install Wails
         run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.0

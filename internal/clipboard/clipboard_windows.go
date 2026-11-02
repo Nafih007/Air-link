@@ -37,7 +37,7 @@ func HasImage() bool {
 
 // ReadImagePNG returns a PNG of the clipboard image via PowerShell/.NET.
 func ReadImagePNG() ([]byte, error) {
-	tmp, err := os.CreateTemp("", "sendtophone-clip-*.png")
+	tmp, err := os.CreateTemp("", "airlink-clip-*.png")
 	if err != nil {
 		return nil, err
 	}
@@ -69,7 +69,7 @@ $img.Save('%s', [System.Drawing.Imaging.ImageFormat]::Png)
 
 // WriteText puts Unicode text on the clipboard via PowerShell (no CGO/unsafe).
 func WriteText(text string) error {
-	tmp, err := os.CreateTemp("", "sendtophone-clip-*.txt")
+	tmp, err := os.CreateTemp("", "airlink-clip-*.txt")
 	if err != nil {
 		return err
 	}

@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"time"
 
-	"sendtophone/internal/applog"
-	"sendtophone/internal/clipboard"
-	"sendtophone/internal/roomhost"
-	"sendtophone/internal/shell"
-	"sendtophone/internal/tray"
+	"airlink/internal/applog"
+	"airlink/internal/clipboard"
+	"airlink/internal/roomhost"
+	"airlink/internal/shell"
+	"airlink/internal/tray"
 
 	"github.com/wailsapp/wails/v2/pkg/runtime"
 )

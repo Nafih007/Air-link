@@ -22,7 +22,7 @@ Right-click a file on your PC, scan a QR code, download on your phone. No phone 
 
 | Layer | Stack |
 | --- | --- |
-| Language | Go 1.22+ (Go module path is still `sendtophone`; the product is Air-Link) |
+| Language | Go 1.22+ (module `airlink`; product binary `airlink.exe`) |
 | Desktop | [Wails v2](https://wails.io/) + WebView2 |
 | Phone page | Plain HTML, CSS, vanilla JS in `web/` (`go:embed`) |
 | PC window | Vanilla HTML/CSS/JS in `frontend/dist` |
@@ -99,7 +99,7 @@ The same flags work on `airlink.exe` (the desktop build can attach to a parent c
 .\build\bin\airlink.exe -version
 ```
 
-Developers can also run the CLI package without Wails: `go run ./cmd/sendtophone -h` (folder name is the Go module, not the product).
+Developers can also run the CLI package without Wails: `go run ./cmd/airlink -h`.
 
 ## Build
 
@@ -116,7 +116,7 @@ Developers can also run the CLI package without Wails: `go run ./cmd/sendtophone
 Ship the Windows binary (and optionally the NSIS installer) as a **GitHub Release**.
 
 1. Push to `main`. CI runs tests and a Wails build on every push/PR (`.github/workflows/ci.yml`).
-2. Tag a version: `git tag v1.0.0 && git push origin v1.0.0`
+2. Tag a version: `git tag v1.0.1 && git push origin v1.0.1`
 3. `.github/workflows/release.yml` builds `airlink.exe` and attaches it to the release.
 
 This app **cannot** be deployed to GitHub Pages, Vercel, or Netlify: it must run on the PC so it can bind a LAN port and read local files.
@@ -124,7 +124,7 @@ This app **cannot** be deployed to GitHub Pages, Vercel, or Netlify: it must run
 ## Project structure
 
 ```
-cmd/sendtophone/   CLI entry (Go module path; product binary is airlink.exe)
+cmd/airlink/       CLI entry (product binary is airlink.exe)
 internal/server/   HTTP server, tokens, range, zip, uploads
 internal/netinfo/  LAN interface detection
 internal/qr/       QR generation

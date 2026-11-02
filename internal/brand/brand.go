@@ -1,6 +1,6 @@
 package brand
 
-// User-facing product identity. Go module path stays sendtophone.
+// User-facing product identity. Go module path is airlink.
 const (
 	AppName      = "Air-Link"
 	ExeName      = "airlink.exe"

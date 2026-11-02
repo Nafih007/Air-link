@@ -1,4 +1,4 @@
-module sendtophone
+module airlink
 
 go 1.25.0
 

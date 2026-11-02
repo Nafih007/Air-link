@@ -12,7 +12,7 @@ import (
 
 // FullscreenPNG captures the virtual screen to a PNG file path.
 func FullscreenPNG() (path string, cleanup func(), err error) {
-	dir, err := os.MkdirTemp("", "sendtophone-shot-*")
+	dir, err := os.MkdirTemp("", "airlink-shot-*")
 	if err != nil {
 		return "", nil, err
 	}

@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"sendtophone/internal/pair"
+	"airlink/internal/pair"
 )
 
 func extractJoinCode(path string) (string, bool) {

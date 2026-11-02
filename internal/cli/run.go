@@ -9,17 +9,17 @@ import (
 	"strings"
 	"time"
 
-	"sendtophone/internal/capture"
-	"sendtophone/internal/clipboard"
-	"sendtophone/internal/content"
-	"sendtophone/internal/netinfo"
-	"sendtophone/internal/server"
-	"sendtophone/internal/shell"
-	"sendtophone/internal/tray"
-	"sendtophone/internal/wifi"
+	"airlink/internal/capture"
+	"airlink/internal/clipboard"
+	"airlink/internal/content"
+	"airlink/internal/netinfo"
+	"airlink/internal/server"
+	"airlink/internal/shell"
+	"airlink/internal/tray"
+	"airlink/internal/wifi"
 )
 
-// Version is shown in CLI output (cmd/sendtophone may overwrite).
+// Version is shown in CLI output (cmd/airlink may overwrite).
 var Version = "dev"
 
 // WantsCLI is true when args include flags (not only file paths).
@@ -275,7 +275,7 @@ func runClipboardImage(opt sessionOpts) int {
 		fmt.Fprintf(opt.stderr, "airlink: %v\n", err)
 		return 1
 	}
-	dir, err := os.MkdirTemp("", "sendtophone-clip-*")
+	dir, err := os.MkdirTemp("", "airlink-clip-*")
 	if err != nil {
 		fmt.Fprintf(opt.stderr, "airlink: %v\n", err)
 		return 1

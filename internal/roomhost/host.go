@@ -7,14 +7,14 @@ import (
 	"sync"
 	"time"
 
-	"sendtophone/internal/clipboard"
-	"sendtophone/internal/mdns"
-	"sendtophone/internal/netinfo"
-	"sendtophone/internal/notify"
-	"sendtophone/internal/pair"
-	"sendtophone/internal/qr"
-	"sendtophone/internal/server"
-	"sendtophone/internal/ui"
+	"airlink/internal/clipboard"
+	"airlink/internal/mdns"
+	"airlink/internal/netinfo"
+	"airlink/internal/notify"
+	"airlink/internal/pair"
+	"airlink/internal/qr"
+	"airlink/internal/server"
+	"airlink/internal/ui"
 )
 
 // Item is one timeline row in the desktop window.

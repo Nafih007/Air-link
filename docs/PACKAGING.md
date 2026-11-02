@@ -15,7 +15,7 @@ Copy `build\bin\airlink.exe` alone to any folder and run:
 .\build\bin\airlink.exe -- "C:\path\to\file.pdf"
 ```
 
-The product binary is `airlink.exe` from `wails build`. Developers can still run `go run ./cmd/sendtophone` (Go module folder name).
+The product binary is `airlink.exe` from `wails build`. Developers can still run `go run ./cmd/airlink`.
 
 Needs: Windows 10/11, WebView2 Runtime (usually preinstalled), same Wi-Fi as the phone.
 

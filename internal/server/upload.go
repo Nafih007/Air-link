@@ -94,7 +94,7 @@ func (s *Server) serveUpload(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	tmpDir, err := os.MkdirTemp("", "sendtophone-up-*")
+	tmpDir, err := os.MkdirTemp("", "airlink-up-*")
 	if err != nil {
 		http.Error(w, "temp error", http.StatusInternalServerError)
 		return

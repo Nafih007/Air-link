@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.1 — 2026-11-03
+
+- Rename the Go module and CLI package from `sendtophone` to `airlink` (`cmd/airlink`). The Windows binary is still `airlink.exe`.
+- Internal temp-file prefixes now use `airlink-`. Auto-register still rejects leftover `sendtophone.exe` paths.
+
 ## 1.0.0 — 2026-11-03
 
 First public release of **Air-Link**.

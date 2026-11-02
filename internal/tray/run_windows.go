@@ -9,8 +9,8 @@ import (
 	"os/exec"
 	"sync"
 
+	"airlink/internal/shell"
 	"github.com/getlantern/systray"
-	"sendtophone/internal/shell"
 )
 
 var (

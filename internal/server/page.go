@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"sendtophone/web"
+	"airlink/web"
 )
 
 func readWebFile(name string) ([]byte, error) {

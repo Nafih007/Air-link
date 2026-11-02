@@ -1,4 +1,4 @@
-﻿# Tasks — Milestone M0 (Core MVP)
+# Tasks — Milestone M0 (Core MVP)
 
 Work one task at a time. Tick the box when done and note which PRD IDs it covers.
 Order: each task leaves something you can run and verify before the next begins.
@@ -7,7 +7,7 @@ Order: each task leaves something you can run and verify before the next begins.
 
 - [x] **M0.1 — CLI stub and session args**  
   Accept one or more file/folder paths as CLI args (and `--help` / version). Print chosen paths and exit 0; no server yet.  
-  **Test:** `go run ./cmd/sendtophone -- path\to\file.txt` prints the path; `--help` works.  
+  **Test:** `go run ./cmd/airlink -- path\to\file.txt` prints the path; `--help` works.  
   **PRD:** C9 (portable CLI entry point) — done
 
 - [x] **M0.2 — Tokenised single-file HTTP serve**  
@@ -337,7 +337,7 @@ Work one task at a time. Reuse serving, uploads (F3), PIN, connected-device list
 
 - [x] **M6.1 — Empty start: QR, waiting**  
   No CLI args → desktop window, session QR, **Waiting for phone…** (no files required). Keep current behaviour when paths are passed and no room is open. Idle default 30 minutes for a room.  
-  **Test:** `go run ./cmd/sendtophone` with no args opens the window + QR; closing the window exits; passing a file still starts a one-shot send if no room is running.  
+  **Test:** `go run ./cmd/airlink` with no args opens the window + QR; closing the window exits; passing a file still starts a one-shot send if no room is running.  
   **PRD:** F5.1
 
 - [ ] **M6.2 — Live connection (STOP)**  

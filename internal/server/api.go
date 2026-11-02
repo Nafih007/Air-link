@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strings"
 
-	"sendtophone/internal/pair"
+	"airlink/internal/pair"
 )
 
 func bearerToken(r *http.Request) string {

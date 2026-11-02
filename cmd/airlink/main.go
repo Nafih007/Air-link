@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"sendtophone/internal/cli"
+	"airlink/internal/cli"
 )
 
 // version is set at link time: -ldflags "-X main.version=1.2.3"

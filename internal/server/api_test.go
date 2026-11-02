@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"sendtophone/internal/pair"
+	"airlink/internal/pair"
 )
 
 func TestAPIUploadRequiresPair(t *testing.T) {

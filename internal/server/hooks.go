@@ -5,7 +5,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"sendtophone/internal/pair"
+	"airlink/internal/pair"
 )
 
 // Hooks let the UI/CLI react to session activity without seeing the token.

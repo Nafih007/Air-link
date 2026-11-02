@@ -8,10 +8,10 @@ PC and phone on the same Wi-Fi. Allow inbound TCP if Windows Firewall prompts.
 
 ```powershell
 cd <repo-root>
-go run ./cmd/sendtophone -- "$env:WINDIR\win.ini"
+go run ./cmd/airlink -- "$env:WINDIR\win.ini"
 ```
 
-Optional: `go run ./cmd/sendtophone -list-ifaces` then `go run ./cmd/sendtophone -bind <ip> -- "$env:WINDIR\win.ini"`
+Optional: `go run ./cmd/airlink -list-ifaces` then `go run ./cmd/airlink -bind <ip> -- "$env:WINDIR\win.ini"`
 
 - [ ] PC prints `Interface: Wi-Fi` (not Cloudflare WARP), `Listening on 192.168.x.x:<port>`, opens a PNG QR window, and prints `Or open in Safari`
 - [ ] Prefer scanning the **PNG window** (not a photo of the terminal ASCII QR)
@@ -41,7 +41,7 @@ Optional: `go run ./cmd/sendtophone -list-ifaces` then `go run ./cmd/sendtophone
 
 ```powershell
 cd <repo-root>
-go run ./cmd/sendtophone -- "$env:WINDIR\win.ini"
+go run ./cmd/airlink -- "$env:WINDIR\win.ini"
 ```
 
 - [ ] Window shows QR, file name, size, countdown
@@ -52,7 +52,7 @@ go run ./cmd/sendtophone -- "$env:WINDIR\win.ini"
 **Keep-alive**
 
 ```powershell
-go run ./cmd/sendtophone -keep-alive -- "$env:WINDIR\win.ini"
+go run ./cmd/airlink -keep-alive -- "$env:WINDIR\win.ini"
 ```
 
 - [ ] First phone downloads; window stays open (`Sent ×1 — keep-alive…`)
@@ -63,7 +63,7 @@ go run ./cmd/sendtophone -keep-alive -- "$env:WINDIR\win.ini"
 
 ```powershell
 cd <repo-root>
-go build -o airlink.exe ./cmd/sendtophone
+go build -o airlink.exe ./cmd/airlink
 .\airlink.exe -install-shell
 ```
 
@@ -115,7 +115,7 @@ cd <repo-root>
 New-Item -ItemType Directory -Force -Path "$env:TEMP\stp-cp3" | Out-Null
 Set-Content "$env:TEMP\stp-cp3\one.txt" "one"
 Set-Content "$env:TEMP\stp-cp3\two.txt" "two"
-go run ./cmd/sendtophone -- "$env:TEMP\stp-cp3" "$env:WINDIR\win.ini"
+go run ./cmd/airlink -- "$env:TEMP\stp-cp3" "$env:WINDIR\win.ini"
 ```
 
 - [ ] Session window opens; phone page shows items / zip name
@@ -125,7 +125,7 @@ go run ./cmd/sendtophone -- "$env:TEMP\stp-cp3" "$env:WINDIR\win.ini"
 Range / resume (single large file, e.g. a video):
 
 ```powershell
-go run ./cmd/sendtophone -- "C:\path\to\large-video.mp4"
+go run ./cmd/airlink -- "C:\path\to\large-video.mp4"
 ```
 
 - [ ] Start download, cancel mid-way, resume (or re-open) and it continues
@@ -148,7 +148,7 @@ go run ./cmd/sendtophone -- "C:\path\to\large-video.mp4"
 
 ```powershell
 cd <repo-root>
-go run ./cmd/sendtophone -- "$env:WINDIR\win.ini"
+go run ./cmd/airlink -- "$env:WINDIR\win.ini"
 ```
 
 - [ ] Phone downloads the file
@@ -158,7 +158,7 @@ go run ./cmd/sendtophone -- "$env:WINDIR\win.ini"
 **Idle timeout (no phone)**
 
 ```powershell
-go run ./cmd/sendtophone -idle 15s -- "$env:WINDIR\win.ini"
+go run ./cmd/airlink -idle 15s -- "$env:WINDIR\win.ini"
 ```
 
 - [ ] Do not open the QR on the phone
@@ -167,7 +167,7 @@ go run ./cmd/sendtophone -idle 15s -- "$env:WINDIR\win.ini"
 **Diagnostics (no phone for 20s)**
 
 ```powershell
-go run ./cmd/sendtophone -idle 2m -diagnose-after 20s -- "$env:WINDIR\win.ini"
+go run ./cmd/airlink -idle 2m -diagnose-after 20s -- "$env:WINDIR\win.ini"
 ```
 
 - [ ] Leave phone on cellular / different Wi-Fi (or just don’t scan)
@@ -219,9 +219,9 @@ go run ./cmd/sendtophone -idle 2m -diagnose-after 20s -- "$env:WINDIR\win.ini"
 
 ```powershell
 cd <repo-root>
-go run ./cmd/sendtophone -- "C:\path\to\photo.jpg"
-go run ./cmd/sendtophone -- "C:\path\to\video.mp4"
-go run ./cmd/sendtophone -- "C:\path\to\a.jpg" "C:\path\to\b.jpg" "C:\path\to\c.jpg" "C:\path\to\d.jpg"
+go run ./cmd/airlink -- "C:\path\to\photo.jpg"
+go run ./cmd/airlink -- "C:\path\to\video.mp4"
+go run ./cmd/airlink -- "C:\path\to\a.jpg" "C:\path\to\b.jpg" "C:\path\to\c.jpg" "C:\path\to\d.jpg"
 ```
 
 **iPhone (HTTP — expected after spike)**
@@ -261,15 +261,15 @@ go run ./cmd/sendtophone -- "C:\path\to\a.jpg" "C:\path\to\b.jpg" "C:\path\to\c.
 ```powershell
 cd <repo-root>
 # Short URL → direct QR (no server)
-go run ./cmd/sendtophone -clipboard
+go run ./cmd/airlink -clipboard
 # Long text → tokenised page + Copy
-go run ./cmd/sendtophone -text "paste a long paragraph here..."
+go run ./cmd/airlink -text "paste a long paragraph here..."
 # Clipboard image (copy an image first)
-go run ./cmd/sendtophone -clipboard-image
+go run ./cmd/airlink -clipboard-image
 # Fullscreen screenshot
-go run ./cmd/sendtophone -screenshot
+go run ./cmd/airlink -screenshot
 # Wi-Fi QR (type y at the confirm prompt)
-go run ./cmd/sendtophone -wifi
+go run ./cmd/airlink -wifi
 ```
 
 **Phone checks**
@@ -300,7 +300,7 @@ go run ./cmd/sendtophone -wifi
 
 ```powershell
 cd <repo-root>
-go run ./cmd/sendtophone -auto-accept -- "C:\path\to\small.txt"
+go run ./cmd/airlink -auto-accept -- "C:\path\to\small.txt"
 ```
 
 **Phone**
@@ -314,7 +314,7 @@ go run ./cmd/sendtophone -auto-accept -- "C:\path\to\small.txt"
 
 ```powershell
 cd <repo-root>
-go run ./cmd/sendtophone -receive -auto-accept
+go run ./cmd/airlink -receive -auto-accept
 ```
 
 **Phone**
@@ -328,7 +328,7 @@ go run ./cmd/sendtophone -receive -auto-accept
 ```powershell
 cd <repo-root>
 # No -auto-accept — PC must Accept/Decline
-go run ./cmd/sendtophone -receive
+go run ./cmd/airlink -receive
 ```
 
 **Phone + PC**
@@ -343,7 +343,7 @@ go run ./cmd/sendtophone -receive
 
 ```powershell
 cd <repo-root>
-go run ./cmd/sendtophone -receive
+go run ./cmd/airlink -receive
 ```
 
 - [ ] After **Accept**, PC window shows a green toast with **Open folder**
@@ -354,7 +354,7 @@ go run ./cmd/sendtophone -receive
 
 ```powershell
 cd <repo-root>
-go run ./cmd/sendtophone -receive -auto-accept
+go run ./cmd/airlink -receive -auto-accept
 ```
 
 - [ ] Phone uploads a large file (≥ 5 MB, ideally ≥ 50 MB); status shows percent / chunk progress
@@ -366,7 +366,7 @@ go run ./cmd/sendtophone -receive -auto-accept
 
 ```powershell
 cd <repo-root>
-go run ./cmd/sendtophone -receive -auto-accept
+go run ./cmd/airlink -receive -auto-accept
 ```
 
 - [ ] Phone: paste a unique sentence in **Send to PC** (no files) → Send
@@ -378,9 +378,9 @@ go run ./cmd/sendtophone -receive -auto-accept
 
 ```powershell
 cd <repo-root>
-go run ./cmd/sendtophone -receive -auto-accept
+go run ./cmd/airlink -receive -auto-accept
 # then, optional convert:
-go run ./cmd/sendtophone -receive -auto-accept -convert-jpg
+go run ./cmd/airlink -receive -auto-accept -convert-jpg
 ```
 
 - [ ] Default: upload a HEIC (or PNG); disk file keeps original extension and bytes
@@ -392,20 +392,20 @@ PRD Feature 3 acceptance: one scan, download a file **and** upload photos back.
 
 ```powershell
 cd <repo-root>
-go run ./cmd/sendtophone -keep-alive -- "C:\path\to\small.txt"
+go run ./cmd/airlink -keep-alive -- "C:\path\to\small.txt"
 ```
 
 - [ ] Scan once; download the file from the phone
 - [ ] Same page: **Send to PC** with ~10 photos (≥ 50 MB total if you have them)
 - [ ] PC shows **one** Accept/Decline for the batch (not per file)
 - [ ] Accept → files in `Downloads\Air-Link`, toast + **Open folder**
-- [ ] Optional receive-only: `go run ./cmd/sendtophone -receive`
+- [ ] Optional receive-only: `go run ./cmd/airlink -receive`
 
 ## Checkpoint — M4.1–M4.4 (PIN, Kick, rate-limit)
 
 ```powershell
 cd <repo-root>
-go run ./cmd/sendtophone -pin -- "$env:WINDIR\win.ini"
+go run ./cmd/airlink -pin -- "$env:WINDIR\win.ini"
 ```
 
 - [ ] PC window shows a **4-digit PIN**
@@ -419,19 +419,19 @@ go run ./cmd/sendtophone -pin -- "$env:WINDIR\win.ini"
 
 ```powershell
 cd <repo-root>
-go run ./cmd/sendtophone
+go run ./cmd/airlink
 ```
 
 - [ ] PC window: QR + **Waiting for phone…** (no file names)
 - [ ] Scan on iPhone → page loads (Connected / waiting); Send to PC still works
 - [ ] Close the window → process exits
-- [ ] `go run ./cmd/sendtophone -- "$env:USERPROFILE\Desktop\test-files\note.txt"` still does a one-shot send
+- [ ] `go run ./cmd/airlink -- "$env:USERPROFILE\Desktop\test-files\note.txt"` still does a one-shot send
 
 ## Checkpoint — M5 pairing + Shortcut API
 
 ```powershell
 cd <repo-root>
-go run ./cmd/sendtophone -receive
+go run ./cmd/airlink -receive
 ```
 
 - [ ] Listens on port **17612**; idle does not expire until you close the window
@@ -461,7 +461,7 @@ wails build
 - [ ] If WebView2 is missing: a message with the Evergreen download link, not a blank crash
 - [ ] iPhone Camera or Safari opens the room after scanning (or paste URL if Camera hangs on LAN `http://`)
 - [ ] PC status becomes **Connected** (and the device list / Kick if a phone is listed)
-- [ ] CLI still works: `go run ./cmd/sendtophone -- "$env:WINDIR\win.ini"`
+- [ ] CLI still works: `go run ./cmd/airlink -- "$env:WINDIR\win.ini"`
 
 ## Checkpoint — single-use join QR (M7.9)
 
@@ -511,7 +511,7 @@ wails build
 cd <repo-root>
 .\build\bin\airlink.exe --help
 .\build\bin\airlink.exe -list-ifaces
-go run ./cmd/sendtophone -- "$env:WINDIR\win.ini"
+go run ./cmd/airlink -- "$env:WINDIR\win.ini"
 ```
 
 ## Checkpoint — right-click menu (M7.10, C1, F5.8)
