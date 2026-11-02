@@ -29,9 +29,9 @@ jobs:
       - name: SHA256
         shell: pwsh
         run: |
-          $hash = (Get-FileHash -Algorithm SHA256 ".\build\bin\airlink.exe").Hash.ToLower()
-          Set-Content -Encoding ascii -NoNewline ".\build\bin\airlink.exe.sha256" "$hash  airlink.exe`n"
-          Get-Content ".\build\bin\airlink.exe.sha256"
+          $hash = (Get-FileHash -Algorithm SHA256 -LiteralPath ".\build\bin\airlink.exe").Hash.ToLower()
+          Set-Content -LiteralPath ".\build\bin\airlink.exe.sha256" -Value "$hash  airlink.exe" -Encoding ascii -NoNewline
+          Get-Content -LiteralPath ".\build\bin\airlink.exe.sha256"
 
       - name: Release
         uses: softprops/action-gh-release@v2
